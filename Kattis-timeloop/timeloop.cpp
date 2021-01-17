@@ -7,7 +7,7 @@ int main() {
 
 	cin >> input;
 	
-	for (int i = 1; i <=W input; i++) {
+	for (int i = 1; i <= input; i++) {
 		cout << i << " Abracadabra" << endl;
 	}
 
