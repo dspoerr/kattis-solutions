@@ -1,7 +1,6 @@
 #include <iostream>
 using namespace std;
 
-// https://open.kattis.com/problems/easiest
 int main() {
 	int n = 0;
 	int t = 0;

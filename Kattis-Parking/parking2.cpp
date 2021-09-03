@@ -2,7 +2,6 @@
 #include <string>
 using namespace std;
 
-// https://open.kattis.com/problems/parking2
 int main() {
 
 	int numOfTrials; 

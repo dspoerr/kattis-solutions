@@ -2,7 +2,6 @@
 #include <string>
 using namespace std;
 
-
 int main() {
 	int numOfParts = 0;
 	int numOfDays = 0;
@@ -40,7 +39,6 @@ int main() {
 	else {
 		cout << "paradox avoided" << endl;
 	}
-
 
 	return 0;
 }
