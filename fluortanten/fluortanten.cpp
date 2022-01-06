@@ -4,43 +4,43 @@
 
 int main()
 {
-    int numChildren;
-    int reluctance, highestSum, bIndex;
-    std::vector<int> vector;
-    
+    int64_t numChildren;
+    int64_t reluctance;
+    int64_t sum;
+    int64_t k;
+
+    int64_t currentDiff, highestDiff;
+
     std::cin >> numChildren;
 
-    /* puts the input into an array. stores the index of Bjorn to remove later*/
-    for (int i = 0; i < numChildren; i++)
+    sum = 0;
+    k = 0;
+
+    highestDiff = 0;
+    currentDiff = 0;
+
+    for (int64_t i = 0; i < numChildren; i++)
     {
         std::cin >> reluctance;
-        vector.push_back(reluctance);
         if (reluctance == 0)
         {
-            bIndex = i;
+            continue;
+        }
+        k++;
+        sum += (reluctance * (k+1));
+        currentDiff -= reluctance;
+
+        if (currentDiff > highestDiff)
+        {
+            highestDiff = currentDiff;
         }
     }
-    vector.erase(vector.begin() + bIndex);
 
-    /* n^2 solution that iterates through the list and tests every possible 
-       location for Bjorn to be in. Sets the maximum sum. */
-    highestSum = INT_MIN;
-    for (int i = 0; i < numChildren; i++)
+    if (highestDiff == INT64_MIN) 
     {
-        vector.insert((vector.begin() + i), 0);
-        int sum = 0;
-        for (int j = 0; j < numChildren; j++)
-        {
-            sum += (vector.at(j) * (j+1));
-        }
-
-        if (sum > highestSum)
-        {
-            highestSum = sum;
-        }
-        vector.erase(vector.begin() + i);
+        highestDiff = 0;
     }
-    
-    std::cout  << highestSum;
+
+    std::cout << (sum + highestDiff);
     return 0;
 }
