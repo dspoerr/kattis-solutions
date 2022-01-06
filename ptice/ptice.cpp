@@ -4,105 +4,35 @@
 
 int main()
 {
-    int numOfAnswers, aIndex, bIndex, gIndex;
+    int numOfAnswers, index;
     int aSum, bSum, gSum;
     int winner;
-    std::string answers; 
+    std::string answers;
+
+    char adrian[3] = {'A', 'B', 'C'};
+    int aLength = sizeof(adrian) / sizeof(adrian[0]);
+    int bruno[4] = { 'B', 'A', 'B', 'C' };
+    int bLength = sizeof(bruno) / sizeof(bruno[0]);
+    int goran[6] = {'C', 'C', 'A', 'A', 'B', 'B'};
+    int gLength = sizeof(goran) / sizeof(goran[0]);
 
     std::cin >> numOfAnswers;
     std::cin >> answers;
 
-    aIndex = 0;
-    bIndex = 0;
-    gIndex = 0;
+    index = 0;
     aSum = 0;
     bSum = 0;
     gSum = 0;
     for (auto& ch : answers)
     {
-        /*Adrian - ABC...*/
-        switch (aIndex)
-        {
-        case 0:
-            if (ch == 'A')
-                aSum++;
-            break;
-        case 1:
-            if (ch == 'B')
-                aSum++;
-            break;
-        case 2:
-            if (ch == 'C')
-                aSum++;
-            break;
-        }
-        aIndex++;
-        if (aIndex == 3)
-        {
-            aIndex = 0;
-        }
+        if (adrian[index % aLength] == ch)
+            aSum++;
+        if (bruno[index % bLength] == ch)
+            bSum++;
+        if (goran[index % gLength] == ch)
+            gSum++;
 
-        /*Bruno - BABC...*/
-        switch (bIndex)
-        {
-        case 0:
-            if (ch == 'B')
-                bSum++;
-            break;
-        case 1:
-            if (ch == 'A')
-                bSum++;
-            break;
-        case 2:
-            if (ch == 'B')
-                bSum++;
-            break;
-        case 3:
-            if (ch == 'C')
-                bSum++;
-            break;
-        }
-
-        bIndex++;
-        if (bIndex == 4)
-        {
-            bIndex = 0;
-        }
-
-        /*Goran - CCAABB..*/
-        switch (gIndex)
-        {
-        case 0:
-            if (ch == 'C')
-                gSum++;
-            break;
-        case 1:
-            if (ch == 'C')
-                gSum++;
-            break;
-        case 2:
-            if (ch == 'A')
-                gSum++;
-            break;
-        case 3:
-            if (ch == 'A')
-                gSum++;
-            break;
-        case 4:
-            if (ch == 'B')
-                gSum++;
-            break;
-        case 5:
-            if (ch == 'B')
-                gSum++;
-            break;
-        }
-
-        gIndex++;
-        if (gIndex == 6)
-        {
-            bIndex = 0;
-        }
+        index++;
     }
 
     winner = std::max(aSum, bSum);
